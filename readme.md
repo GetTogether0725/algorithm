@@ -33,9 +33,9 @@
 
 
 
-### [220518_01_xx_两数之和](https://leetcode.cn/problems/two-sum/)
+## [220518_01_xx_两数之和](https://leetcode.cn/problems/two-sum/)
 
-#### 题目
+### 题目
 
 给定一个整数数组 `nums` 和一个整数目标值 `target`，请你在该数组中找出 **和为目标值** `target`  的那 **两个** 整数，并返回它们的数组下标。
 
@@ -85,13 +85,40 @@
 
 
 
-#### 题解
+### 题解
 
-比如说： 这个题我会做！！！！
+#### 思路1
 
-思路：......
+暴力解法，时间复杂度$$O(n^2)$$?，空间复杂度$$O(1)$$
 
-1213131341313131
+分为两个循环，外循环遍历数组中的全部元素，
+
+内循环遍历**除外循环遍历的当前元素之后的元素**，直至找到二者和满足要求的。
+
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        for(int i=0; i<nums.size(); ++i) {
+            for(int j=i+1; j<nums.size(); ++j)
+            if(target - nums[i] == nums[j]) {
+                return vector<int> ({i,j});
+            }
+        }
+        return vector<int>{};
+    }
+};
+```
+
+
+
+
+
+
+
+
+
+### 冲突测试
 
 冲突测试。
 
