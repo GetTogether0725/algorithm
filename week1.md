@@ -107,9 +107,36 @@ class Solution:
                     return[i,nums.index(v)]
 ```
 
-##### 另外一种解法
+##### 查表法（hash table）
+
+**借助容器特性提高查找速度，降低整体时间复杂度。**
+
+`unordered_map`是一个无序map，通过接口count接口查找时间复杂度为$$O(1)$$，外层一个循环$$O(n)$$
+
+```cpp
+/* 参考 https://en.cppreference.com/w/cpp/container/unordered_map */
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> map;
+        vector<int> res(2,0);
+        for(int i=0; i<nums.size(); ++i) {
+            if(map.count(target - nums[i])) {
+                res[0] = map.at(target - nums[i]);
+                res[1] = i;
+            }
+            map.insert(pair<int, int>(nums[i], i));
+        }
+        return res;
+    }
+};
+```
 
 
+
+##### 另一种解法
+
+先排序（快排可达$$O(nlog_2n)$$），然后。。。已经没上一种速度快了。
 
 
 
