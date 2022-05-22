@@ -5,7 +5,7 @@
 |                          序号/题号                           |                     题目                      | 难度系数 |        阿宫        |        阿唐        |
 | :----------------------------------------------------------: | :-------------------------------------------: | :------: | :----------------: | :----------------: |
 |                             1/1                              |             [两数之和](#两数之和)             |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
-| 2/[面试题 01.01](https://leetcode.cn/problems/is-unique-lcci/) |     [判定字符是否唯一](#判定字符是否唯一)     |  :star:  | :heavy_check_mark: |                    |
+| 2/[面试题 01.01](https://leetcode.cn/problems/is-unique-lcci/) |     [判定字符是否唯一](#判定字符是否唯一)     |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
 | 3/[面试题 01.02](https://leetcode.cn/problems/check-permutation-lcci/) | [判定是否互为字符重排](#判定是否互为字符重排) |  :star:  |                    |                    |
 |                                                              |                                               |          |                    |                    |
 |                                                              |                                               |          |                    |                    |
@@ -171,7 +171,9 @@ public:
 
 #### 题解
 
-借助数组，数组的**索引为单字符的ASCII码值**，**值为出现的次数**，当出现次数大于`1`时，即表示有重复数据。
+##### 借助数组
+
+数组的**索引为单字符的ASCII码值**，**值为出现的次数**，当出现次数大于`1`时，即表示有重复数据。
 
 时间复杂度$$O(n)$$，空间复杂度$$128$$?
 
@@ -191,6 +193,28 @@ public:
         return true;
     }
 };
+```
+
+##### 暴力解
+
+```python
+class Solution:
+    def isUnique(self, astr: str) -> bool:
+        for i in range(0, len(astr), 1):
+            for j in range(i+1, len(astr),1):
+                if astr[i]==astr[j]:
+                    return False
+        return True
+```
+
+##### 借助`set()`
+
+创建无序不重复元素集，判断长度是否一致
+
+```python
+class Solution:
+    def isUnique(self, astr: str) -> bool:
+        return len(set(astr))==len(astr)
 ```
 
 
