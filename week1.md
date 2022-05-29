@@ -6,7 +6,7 @@
 | :----------------------------------------------------------: | :-------------------------------------------: | :------: | :----------------: | :----------------: |
 |                             1/1                              |             [两数之和](#两数之和)             |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
 | 2/[面试题 01.01](https://leetcode.cn/problems/is-unique-lcci/) |     [判定字符是否唯一](#判定字符是否唯一)     |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
-| 3/[面试题 01.02](https://leetcode.cn/problems/check-permutation-lcci/) | [判定是否互为字符重排](#判定是否互为字符重排) |  :star:  |                    |                    |
+| 3/[面试题 01.02](https://leetcode.cn/problems/check-permutation-lcci/) | [判定是否互为字符重排](#判定是否互为字符重排) |  :star:  | :heavy_check_mark: |                    |
 |                                                              |                                               |          |                    |                    |
 |                                                              |                                               |          |                    |                    |
 |                                                              |                                               |          |                    |                    |
@@ -247,6 +247,31 @@ class Solution:
 
 
 #### 题解
+
+##### 借助数组
+
+借助数组，构建`map`，`key`为[a-zA-Z]字符，`value`为改字符出现的次数。然后遍历第二个字符串，只要该字符没有出现，则说明不满足情况，返回false；只要改字符出现，则取出对应的`value-1`
+
+```cpp
+class Solution {
+public:
+    bool CheckPermutation(string s1, string s2) {
+        char arr[128] = {0};
+        for(const auto& c : s1) 
+            arr[c] += 1;
+
+        for (const auto &c : s2) {
+            if ( arr[c] != 0) 
+                arr[c] -= 1;
+            else 
+                return false;
+        } 
+        return true;
+    }
+};
+```
+
+
 
 ### 题目（链接）
 
