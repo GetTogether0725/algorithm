@@ -271,6 +271,21 @@ public:
 };
 ```
 
+##### list重排
+
+```python
+class Solution:
+    def CheckPermutation(self, s1: str, s2: str) -> bool:
+        l1 = len(s1)
+        l2 = len(s2)
+        if l1 == l2:
+            list1 = sorted(list(s1))
+            list2 = sorted(list(s2))
+            if list1 == list2:
+                return True
+        return False
+```
+
 
 
 ### 题目（链接）
