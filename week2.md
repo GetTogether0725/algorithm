@@ -42,6 +42,41 @@ URL化。编写一种方法，将字符串中的空格全部替换为%20。假�
 
 #### 题解
 
+##### 逆序暴力解
+
+借助**栈**特性，**先入后出**
+
+逆序遍历一次数组，若当前为空格（ascii码为0x20）则将%20存储到stack中，注意为逆序；不为空格，则正常存到stack中。
+
+最后在遍历一遍stack，将其存到字符串中。。
+
+```cpp
+class Solution {
+public:
+    string replaceSpaces(string S, int length) {
+        std::stack<char> s;
+        string tmp("%20");
+        for (int i=length-1; i>=0; --i) {
+            if(S[i] == 0x20) {
+                for(int j=0; j<tmp.size(); ++j) 
+                    s.push(tmp[3-j-1]);  
+            } else {
+                s.push(S[i]);
+            }
+        }
+        int ssize = s.size();
+        string res(ssize,0);
+        for(int i=0; i<ssize; ++i) {
+            res[i] = s.top();
+            s.pop();
+        }
+        return res;
+    }
+};
+```
+
+
+
 
 
 
