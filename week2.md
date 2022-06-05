@@ -6,7 +6,7 @@
 | :----------------------------------------------------------: | :-------------------: | :----------: | :----------------: | :--: |
 | 1/[面试题 01.03. URL化](https://leetcode.cn/problems/string-to-url-lcci/) |    [URL化](#URL化)    |    :star:    | :heavy_check_mark: |      |
 | 2/[面试题 01.04. 回文排列](https://leetcode.cn/problems/palindrome-permutation-lcci/) | [回文排列](#回文排列) |    :star:    | :heavy_check_mark: |      |
-| 3/[面试题 01.05. 一次编辑](https://leetcode.cn/problems/one-away-lcci/) | [一次编辑](#一次编辑) | :star::star: |                    |      |
+| 3/[面试题 01.05. 一次编辑](https://leetcode.cn/problems/one-away-lcci/) | [一次编辑](#一次编辑) | :star::star: | :heavy_check_mark: |      |
 |                                                              |                       |              |                    |      |
 
 
