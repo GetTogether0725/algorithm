@@ -6,10 +6,7 @@
 | :----------------------------------------------------------: | :-------------------------------------------: | :------: | :----------------: | :----------------: |
 |                             1/1                              |             [两数之和](#两数之和)             |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
 | 2/[面试题 01.01](https://leetcode.cn/problems/is-unique-lcci/) |     [判定字符是否唯一](#判定字符是否唯一)     |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
-| 3/[面试题 01.02](https://leetcode.cn/problems/check-permutation-lcci/) | [判定是否互为字符重排](#判定是否互为字符重排) |  :star:  | :heavy_check_mark: |                    |
-|                                                              |                                               |          |                    |                    |
-|                                                              |                                               |          |                    |                    |
-|                                                              |                                               |          |                    |                    |
+| 3/[面试题 01.02](https://leetcode.cn/problems/check-permutation-lcci/) | [判定是否互为字符重排](#判定是否互为字符重排) |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
 |                                                              |                                               |          |                    |                    |
 
 ## 题目
