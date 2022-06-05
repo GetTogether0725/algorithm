@@ -2,12 +2,12 @@
 
 ## 看板
 
-|                          序号/题号                           |         题目          |   难度系数   | 阿宫 | 阿唐 |
-| :----------------------------------------------------------: | :-------------------: | :----------: | :--: | :--: |
-| 1/[面试题 01.03. URL化](https://leetcode.cn/problems/string-to-url-lcci/) |    [URL化](#URL化)    |    :star:    |      |      |
-| 2/[面试题 01.04. 回文排列](https://leetcode.cn/problems/palindrome-permutation-lcci/) | [回文排列](#回文排列) |    :star:    |      |      |
-| 3/[面试题 01.05. 一次编辑](https://leetcode.cn/problems/one-away-lcci/) | [一次编辑](#一次编辑) | :star::star: |      |      |
-|                                                              |                       |              |      |      |
+|                          序号/题号                           |         题目          |   难度系数   |        阿宫        | 阿唐 |
+| :----------------------------------------------------------: | :-------------------: | :----------: | :----------------: | :--: |
+| 1/[面试题 01.03. URL化](https://leetcode.cn/problems/string-to-url-lcci/) |    [URL化](#URL化)    |    :star:    | :heavy_check_mark: |      |
+| 2/[面试题 01.04. 回文排列](https://leetcode.cn/problems/palindrome-permutation-lcci/) | [回文排列](#回文排列) |    :star:    | :heavy_check_mark: |      |
+| 3/[面试题 01.05. 一次编辑](https://leetcode.cn/problems/one-away-lcci/) | [一次编辑](#一次编辑) | :star::star: |                    |      |
+|                                                              |                       |              |                    |      |
 
 
 
@@ -99,6 +99,48 @@ public:
 ```
 
 #### 题解
+
+##### 借助数组
+
+数组的**索引为单字符的ASCII码值**，**值为出现的次数**，当**至少有两个字符**出现的次数为**奇数时**，说明当前字符串中不包含某个回文串的排列。
+
+```cpp
+class Solution {
+public:
+    bool canPermutePalindrome(string s) {
+        int map[256] = {0};
+        for(int i=0; i<s.size(); ++i) {
+            map[ s[i] ] += 1; 
+        }
+
+        int count=0;
+        for(int i=0; i<sizeof(map)/sizeof(map[0]); ++i) {
+            if(map[i]) {
+                if(map[i] % 2 == 1) {
+                    count++;
+                }
+            }
+        }
+        return (count < 2) ? true : false;
+    }
+};
+```
+
+更优的一个解法
+
+借助 bitset，使空间占用最小，默认b被初始化为`0000000...`，`b.flip(pos)`将第`pos`位翻转，然后至少当2个字符有奇数个时，说明当前字符串中不包含某个回文串的排列。
+
+```cpp
+class Solution {
+public:
+    bool canPermutePalindrome(string &s) {
+        bitset<128> b;
+        for(auto &c : s) 
+            b.flip(c);
+        return b.count() < 2;
+    }
+};
+```
 
 
 
