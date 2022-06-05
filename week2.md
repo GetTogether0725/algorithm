@@ -172,6 +172,34 @@ second = "pal"
 
 #### 题解
 
+```cpp
+class Solution {
+public:
+    bool oneEditAway(string first, string second) {
+        int len = first.size() - second.size(); // 计算两字符串的差值
+        bool once = true;                       // 仅支持一次修改
+        if(len > 1 || len < -1)                 // 这两种情况均不符合要求
+            return false;
+        for(int i=0,j=0; i < first.size() && j < second.size();i++,j++) {
+            if(first.at(i) != second.at(j)) {   // 如果二者字符不匹配，说明要添加/删除字符
+                if(once) {                      // 如果未修改，则可修改；如果修改了，直接返回不满足条件。
+                    if(len == 1) {              // second 要不要添加一个字符
+                        --j;
+                    } else if (len == -1) {     // second 要不要删除一个字符
+                        --i;
+                    }
+                    once =! once;
+                }
+                else {
+                    return once;
+                }
+            }
+        }
+        return true;
+    }
+};
+```
+
 
 
 
