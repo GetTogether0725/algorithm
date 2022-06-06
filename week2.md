@@ -2,12 +2,12 @@
 
 ## 看板
 
-|                          序号/题号                           |         题目          |   难度系数   |        阿宫        | 阿唐 |
-| :----------------------------------------------------------: | :-------------------: | :----------: | :----------------: | :--: |
-| 1/[面试题 01.03. URL化](https://leetcode.cn/problems/string-to-url-lcci/) |    [URL化](#URL化)    |    :star:    | :heavy_check_mark: |      |
-| 2/[面试题 01.04. 回文排列](https://leetcode.cn/problems/palindrome-permutation-lcci/) | [回文排列](#回文排列) |    :star:    | :heavy_check_mark: |      |
-| 3/[面试题 01.05. 一次编辑](https://leetcode.cn/problems/one-away-lcci/) | [一次编辑](#一次编辑) | :star::star: | :heavy_check_mark: |      |
-|                                                              |                       |              |                    |      |
+|                          序号/题号                           |         题目          |   难度系数   |        阿宫        |        阿唐        |
+| :----------------------------------------------------------: | :-------------------: | :----------: | :----------------: | :----------------: |
+| 1/[面试题 01.03. URL化](https://leetcode.cn/problems/string-to-url-lcci/) |    [URL化](#URL化)    |    :star:    | :heavy_check_mark: | :heavy_check_mark: |
+| 2/[面试题 01.04. 回文排列](https://leetcode.cn/problems/palindrome-permutation-lcci/) | [回文排列](#回文排列) |    :star:    | :heavy_check_mark: | :heavy_check_mark: |
+| 3/[面试题 01.05. 一次编辑](https://leetcode.cn/problems/one-away-lcci/) | [一次编辑](#一次编辑) | :star::star: | :heavy_check_mark: | :heavy_check_mark: |
+|                                                              |                       |              |                    |                    |
 
 
 
@@ -75,7 +75,15 @@ public:
 };
 ```
 
+宝，用string.replace(‘a’,‘b’)函数算什么解法（对比C++的程序，python也太好用了）
 
+```python
+class Solution:
+    def replaceSpaces(self, S: str, length: int) -> str:
+        S = S[0:length]
+        S = S.replace(" ","%20")
+        return S
+```
 
 
 
@@ -142,7 +150,24 @@ public:
 };
 ```
 
+##### 查看子字符出现的次数
 
+```python
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        S1 = "".join(set(s))
+        n = 0
+        print(S1)
+        for i in range(0,len(S1),1):
+            times = s.count(str(S1[i]),0,len(s))
+            print(str(S1[i]))
+            print(times)
+            if times % 2 == 1:
+                n+=1
+                if n>1 :
+                    return False
+        return True
+```
 
 
 
@@ -200,7 +225,26 @@ public:
 };
 ```
 
+##### 毫无逻辑性的暴力解
 
+```python
+class Solution:
+    def oneEditAway(self, first: str, second: str) -> bool:
+        if max(len(first),len(second))-min(len(first),len(second)) > 1:
+            return False
+        if len(first)<=1 and len(second)<=1:
+            return True
+        num = max(len(first),len(second))
+        for i in range(0,min(len(first),len(second)),1):
+            if first[i] != second[i]:
+                if first[-(num-i-1):] == second[-(num-i-1):]:
+                    return True
+                else:
+                    if i == min(len(first),len(second))-1 and min(len(first),len(second)) == num:
+                        return True
+                    return False
+        return True
+```
 
 
 
