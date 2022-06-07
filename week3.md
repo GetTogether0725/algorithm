@@ -2,12 +2,12 @@
 
 ## 看板
 
-|                          序号/题号                           |           题目            |   难度系数   | 阿宫 | 阿唐 |
-| :----------------------------------------------------------: | :-----------------------: | :----------: | :--: | :--: |
-| 1/[面试题 01.06. 字符串压缩](https://leetcode.cn/problems/compress-string-lcci/) | [字符串压缩](#字符串压缩) |    :star:    |      |      |
-| 2/[面试题 01.07. 旋转矩阵](https://leetcode.cn/problems/rotate-matrix-lcci/) |   [旋转矩阵](#旋转矩阵)   | :star::star: |      |      |
-| 3/[面试题 01.08. 零矩阵](https://leetcode.cn/problems/zero-matrix-lcci/) |     [零矩阵](#零矩阵)     | :star::star: |      |      |
-|                                                              |                           |              |      |      |
+|                          序号/题号                           |           题目            |   难度系数   | 阿宫 |        阿唐        |
+| :----------------------------------------------------------: | :-----------------------: | :----------: | :--: | :----------------: |
+| 1/[面试题 01.06. 字符串压缩](https://leetcode.cn/problems/compress-string-lcci/) | [字符串压缩](#字符串压缩) |    :star:    |      | :heavy_check_mark: |
+| 2/[面试题 01.07. 旋转矩阵](https://leetcode.cn/problems/rotate-matrix-lcci/) |   [旋转矩阵](#旋转矩阵)   | :star::star: |      |                    |
+| 3/[面试题 01.08. 零矩阵](https://leetcode.cn/problems/zero-matrix-lcci/) |     [零矩阵](#零矩阵)     | :star::star: |      |                    |
+|                                                              |                           |              |      |                    |
 
 ## 题目
 
@@ -40,7 +40,55 @@
 
 #### 题解
 
+##### 暴力解
 
+```python
+class Solution:
+    def compressString(self, S: str) -> str:
+        i = 0
+        S_new = ""
+        while i<len(S):
+            time = 1
+            j=i+1
+            while j<len(S):
+                if S[i]==S[j]:
+                    time += 1
+                    j+=1
+                else:
+                    j = len(S)+1
+            S_new = S_new+S[i]+str(time)
+            i = i+time
+        if len(S_new)>=len(S):
+            return S
+        else:
+            return S_new
+```
+
+不推荐使用字符串直接 res += s[i] 拼接，在 Python 中字符串是「不可变对象」，每次字符串拼接都会生成一个新字符串，效率低下。推荐使用列表，先将结果按照顺序添加，最终返回前拼接为字符串，因此只需要一次拼接操作。
+
+```python
+class Solution:
+    def compressString(self, S: str) -> str:
+        i = 0
+        S_new = []
+        while i<len(S):
+            time = 1
+            j=i+1
+            S_new.append(S[i])
+            while j<len(S):
+                if S[i]==S[j]:
+                    time += 1
+                    j+=1
+                else:
+                    j = len(S)+1
+            S_new.append(str(time))
+            i = i+time
+        S_ = "".join(S_new)
+        if len(S_)>=len(S):
+            return S
+        else:
+            return S_
+```
 
 
 
