@@ -77,6 +77,14 @@ public:
 
 宝，用string.replace(‘a’,‘b’)函数算什么解法（对比C++的程序，python也太好用了）
 
+> 你这样不行，这算什么算法
+>
+> > 空格是算一个字符，"%20"这是3个字符
+> >
+> > 这样用的话，`a bcd`，`a%20bcd`，一个位置是完全装不下3个字符的，所以说，后面字符需要往后移，空格是一个字符，%20是3个字符，所以20没有位置放，这个时候就得需要将bcd往后移动2个字符。
+> >
+> > **无法理解你用API做题的意义何在**
+
 ```python
 class Solution:
     def replaceSpaces(self, S: str, length: int) -> str:

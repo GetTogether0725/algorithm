@@ -92,6 +92,44 @@ class Solution:
 
 
 
+##### 也算是一个暴力解
+
+比较当前字符与上一个字符，如果相同则加1，不同则输出相加后的个数，然后比较字符串与原字符串的长度即可。
+
+> 推荐使用 res += to_string(count); 而不是res = res + to_string(count)；
+>
+> 前者相当于 res.append(to_string(count))，在res末尾添加字符
+>
+> 而后者需要开辟一段内存 string tmp = res; res = tmp + to_string(count);
+
+```cpp
+class Solution {
+public:
+    string compressString(string S) {
+        string res;
+        int count=1;
+        // 使用迭代器，目的是知道最后一个元素，将count追加到最后
+        for(auto b = S.begin();b!=S.end();++b) {
+            if(*b == res.back()) { // 如果当前字符与上一个字符相等，则加1
+                count ++;
+            } else {		    
+                if(res.size()) {
+                    res +=to_string(count);
+                    count = 1;
+                } 
+                res += *b;
+            }  
+            if(b == S.end()-1) {
+                res +=to_string(count); 
+            } 
+        }
+        return S.size() > res.size() ? res : S;
+    }
+};
+```
+
+
+
 
 
 ### [旋转矩阵](https://leetcode.cn/problems/rotate-matrix-lcci/)
@@ -146,6 +184,55 @@ class Solution:
 
 #### 题解
 
+##### 遍历遍历还是遍历
+
+```
+ 1 2 3           1 4 7           7 4 1
+ 4 5 6  ==> 2 5 8   ==> 8 5 2
+ 7 8 9           3 6 9           9 6 3
+```
+
+整个过程分为两部分，第一部分，行列交换，第二部分按照要求交换前后元素。
+
+1.  行列交换，需要注意是从左上角到右下角
+
+
+2.  交换前后元素
+
+```cpp
+class Solution {
+public:
+    void swap(int &a, int&b){
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+
+    void rotate(vector<vector<int>>& matrix) {
+        int N = matrix.size();
+        if(! N) return;
+
+        for(int i=0; i<N; ++i) {
+            for(int j=i; j<N; ++j) {
+                swap(matrix[i][j], matrix[j][i]);
+            }
+        }
+
+        for(int i=0; i<N; ++i) {
+            for(int j=0; j<N/2; ++j) {
+                swap(matrix[i][j], matrix[i][N-j-1]);
+            }
+        }
+
+        // for(int i=0;i<N;++i) {
+        //     for(int j=0; j<N; ++j) 
+        //         cout << matrix[i][j] << " ";
+        //     cout << endl;
+        // }
+    }
+};
+```
+
 
 
 
@@ -195,6 +282,41 @@ class Solution:
 
 
 #### 题解
+
+##### 遍历遍历还是遍历
+
+遍历所有元素，如果满足条件，则记录位置，遍历所有的位置，将矩阵置为0
+
+```cpp
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int M = matrix.size();    // 行
+        if(!M) return;
+        int N = matrix[0].size(); // 列
+        if(!N) return;
+        vector<vector<int> > pos;
+
+        for(int i=0;i<M;++i) {
+            for(int j=0;j<N;++j){
+                if(matrix[i][j] == 0) {
+                    pos.push_back(vector<int>{i,j});
+                }
+            }
+        }
+        // cout << "M:" << M << " N:" <<N <<endl;
+        for(auto c : pos) {    
+            // cout << "i:"<<c[0] << " j:"<<c[1]<<endl;
+            for(int i=0;i<M;++i){ // 列确定，遍历行
+                matrix[i][c[1]] = 0;
+            }
+            for(int j=0;j<N;++j){ // 行确定，遍历列
+                matrix[c[0]][j] = 0;
+            }
+        }
+    }
+};
+```
 
 
 
