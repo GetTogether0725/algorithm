@@ -2,12 +2,12 @@
 
 ## 看板
 
-|                          序号/题号                           |           题目            |   难度系数   | 阿宫 |        阿唐        |
-| :----------------------------------------------------------: | :-----------------------: | :----------: | :--: | :----------------: |
-| 1/[面试题 01.06. 字符串压缩](https://leetcode.cn/problems/compress-string-lcci/) | [字符串压缩](#字符串压缩) |    :star:    |      | :heavy_check_mark: |
-| 2/[面试题 01.07. 旋转矩阵](https://leetcode.cn/problems/rotate-matrix-lcci/) |   [旋转矩阵](#旋转矩阵)   | :star::star: |      |                    |
-| 3/[面试题 01.08. 零矩阵](https://leetcode.cn/problems/zero-matrix-lcci/) |     [零矩阵](#零矩阵)     | :star::star: |      |                    |
-|                                                              |                           |              |      |                    |
+|                          序号/题号                           |           题目            |   难度系数   |        阿宫        |        阿唐        |
+| :----------------------------------------------------------: | :-----------------------: | :----------: | :----------------: | :----------------: |
+| 1/[面试题 01.06. 字符串压缩](https://leetcode.cn/problems/compress-string-lcci/) | [字符串压缩](#字符串压缩) |    :star:    | :heavy_check_mark: | :heavy_check_mark: |
+| 2/[面试题 01.07. 旋转矩阵](https://leetcode.cn/problems/rotate-matrix-lcci/) |   [旋转矩阵](#旋转矩阵)   | :star::star: | :heavy_check_mark: |                    |
+| 3/[面试题 01.08. 零矩阵](https://leetcode.cn/problems/zero-matrix-lcci/) |     [零矩阵](#零矩阵)     | :star::star: | :heavy_check_mark: |                    |
+|                                                              |                           |              |                    |                    |
 
 ## 题目
 
