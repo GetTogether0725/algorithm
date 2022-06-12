@@ -2,12 +2,12 @@
 
 ## 看板
 
-|                          序号/题号                           |                    题目                     | 难度系数 | 阿宫 | 阿唐 |
-| :----------------------------------------------------------: | :-----------------------------------------: | :------: | :--: | :--: |
-| 1/[面试题 01.09. 字符串轮转](https://leetcode.cn/problems/string-rotation-lcci/) |          [字符串轮转](#字符串轮转)          |  :star:  |      |      |
-| 2/[面试题 02.01. 移除重复节点](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |        [移除重复节点](#移除重复节点)        |  :star:  |      |      |
-| 3/[面试题 02.02. 返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/) | [返回倒数第 k 个节点](#返回倒数第 k 个节点) |  :star:  |      |      |
-|                                                              |                                             |          |      |      |
+|                          序号/题号                           |                   题目                   | 难度系数 | 阿宫 | 阿唐 |
+| :----------------------------------------------------------: | :--------------------------------------: | :------: | :--: | :--: |
+| 1/[面试题 01.09. 字符串轮转](https://leetcode.cn/problems/string-rotation-lcci/) |        [字符串轮转](#字符串轮转)         |  :star:  |      |      |
+| 2/[面试题 02.01. 移除重复节点](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |      [移除重复节点](#移除重复节点)       |  :star:  |      |      |
+| 3/[面试题 02.02. 返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/) | [返回倒数第20个节点](#返回倒数第k个节点) |  :star:  |      |      |
+|                                                              |                                          |          |      |      |
 
 ## 题目
 
@@ -89,7 +89,7 @@
 
 
 
-### [返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/)
+### [返回倒数第k个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/)
 
 实现一种算法，找出单向链表中倒数第 k 个节点。返回该节点的值。
 
