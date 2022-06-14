@@ -2,12 +2,12 @@
 
 ## 看板
 
-|                          序号/题号                           |                   题目                   | 难度系数 | 阿宫 |        阿唐        |
-| :----------------------------------------------------------: | :--------------------------------------: | :------: | :--: | :----------------: |
-| 1/[面试题 01.09. 字符串轮转](https://leetcode.cn/problems/string-rotation-lcci/) |        [字符串轮转](#字符串轮转)         |  :star:  |      | :heavy_check_mark: |
-| 2/[面试题 02.01. 移除重复节点](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |      [移除重复节点](#移除重复节点)       |  :star:  |      |                    |
-| 3/[面试题 02.02. 返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/) | [返回倒数第20个节点](#返回倒数第k个节点) |  :star:  |      |                    |
-|                                                              |                                          |          |      |                    |
+|                          序号/题号                           |                   题目                   | 难度系数 |        阿宫        |        阿唐        |
+| :----------------------------------------------------------: | :--------------------------------------: | :------: | :----------------: | :----------------: |
+| 1/[面试题 01.09. 字符串轮转](https://leetcode.cn/problems/string-rotation-lcci/) |        [字符串轮转](#字符串轮转)         |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
+| 2/[面试题 02.01. 移除重复节点](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |      [移除重复节点](#移除重复节点)       |  :star:  |                    |                    |
+| 3/[面试题 02.02. 返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/) | [返回倒数第20个节点](#返回倒数第k个节点) |  :star:  |                    |                    |
+|                                                              |                                          |          |                    |                    |
 
 ## 题目
 
@@ -79,6 +79,36 @@ class Solution:
 ```
 
 
+
+##### 遍历遍历还是遍历
+
+怎么感觉我写的这么复杂。。。
+
+```cpp
+class Solution {
+public:
+    bool isFlipedString(string s1, string s2) {
+        int s1sz = s1.size(); // s1长度
+        int s2sz = s2.size(); // s2长度
+        if(s1sz == s2sz) {    // 如果s1与s2长度相等，则进行判断，斗则false
+            int j=0;
+            if(s1sz == 0)     // 且都为0，返回true
+                return true;
+                                    // 否则，进行比较
+            for(int i=0; i<s2sz * 2; ++i) {   // 循环次数2*s2sz
+                if(s2[i%s2sz] == s1[j]) { 
+                    while(s2[++i % s2sz] == s1[++j]);
+                    if(j == s1sz)
+                        return true;
+                    else 
+                        j = 0;
+                }  
+            }
+        }
+        return false;
+    }
+};
+```
 
 
 
