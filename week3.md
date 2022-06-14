@@ -5,8 +5,8 @@
 |                          序号/题号                           |           题目            |   难度系数   |        阿宫        |        阿唐        |
 | :----------------------------------------------------------: | :-----------------------: | :----------: | :----------------: | :----------------: |
 | 1/[面试题 01.06. 字符串压缩](https://leetcode.cn/problems/compress-string-lcci/) | [字符串压缩](#字符串压缩) |    :star:    | :heavy_check_mark: | :heavy_check_mark: |
-| 2/[面试题 01.07. 旋转矩阵](https://leetcode.cn/problems/rotate-matrix-lcci/) |   [旋转矩阵](#旋转矩阵)   | :star::star: | :heavy_check_mark: |                    |
-| 3/[面试题 01.08. 零矩阵](https://leetcode.cn/problems/zero-matrix-lcci/) |     [零矩阵](#零矩阵)     | :star::star: | :heavy_check_mark: |                    |
+| 2/[面试题 01.07. 旋转矩阵](https://leetcode.cn/problems/rotate-matrix-lcci/) |   [旋转矩阵](#旋转矩阵)   | :star::star: | :heavy_check_mark: | :heavy_check_mark: |
+| 3/[面试题 01.08. 零矩阵](https://leetcode.cn/problems/zero-matrix-lcci/) |     [零矩阵](#零矩阵)     | :star::star: | :heavy_check_mark: | :heavy_check_mark: |
 |                                                              |                           |              |                    |                    |
 
 ## 题目
@@ -187,9 +187,9 @@ public:
 ##### 遍历遍历还是遍历
 
 ```
- 1 2 3           1 4 7           7 4 1
+ 1 2 3      1 4 7       7 4 1
  4 5 6  ==> 2 5 8   ==> 8 5 2
- 7 8 9           3 6 9           9 6 3
+ 7 8 9      3 6 9       9 6 3
 ```
 
 整个过程分为两部分，第一部分，行列交换，第二部分按照要求交换前后元素。
@@ -233,7 +233,24 @@ public:
 };
 ```
 
+遍历+1，行交换，对角线上下对称交换
 
+ 1 2 3          7 8 9          7 4 1
+ 4 5 6  ==> 4 5 6   ==> 8 5 2
+ 7 8 9          1 2 3          9 6 3
+
+```python
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        n=len(matrix)
+        for i in range(0,n//2,1):
+            for j in range(0,n,1):
+                matrix[i][j],matrix[n-i-1][j]=matrix[n-i-1][j],matrix[i][j]
+        for i in range(n):
+            for j in range(n):
+                if i < j:
+                    matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
+```
 
 
 
@@ -318,7 +335,26 @@ public:
 };
 ```
 
-
+```python
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        h=[]
+        l=[]
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if matrix[i][j]==0:
+                    h.append(i)
+                    l.append(j)
+        for m in range(len(h)):
+            for n in range(len(matrix[0])):
+                matrix[h[m]][n]=0
+        for p in range(len(l)):
+            for q in range(len(matrix)):
+                matrix[q][l[p]]=0
+```
 
 
 

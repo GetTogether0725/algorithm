@@ -2,12 +2,12 @@
 
 ## 看板
 
-|                          序号/题号                           |                   题目                   | 难度系数 | 阿宫 | 阿唐 |
-| :----------------------------------------------------------: | :--------------------------------------: | :------: | :--: | :--: |
-| 1/[面试题 01.09. 字符串轮转](https://leetcode.cn/problems/string-rotation-lcci/) |        [字符串轮转](#字符串轮转)         |  :star:  |      |      |
-| 2/[面试题 02.01. 移除重复节点](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |      [移除重复节点](#移除重复节点)       |  :star:  |      |      |
-| 3/[面试题 02.02. 返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/) | [返回倒数第20个节点](#返回倒数第k个节点) |  :star:  |      |      |
-|                                                              |                                          |          |      |      |
+|                          序号/题号                           |                   题目                   | 难度系数 | 阿宫 |        阿唐        |
+| :----------------------------------------------------------: | :--------------------------------------: | :------: | :--: | :----------------: |
+| 1/[面试题 01.09. 字符串轮转](https://leetcode.cn/problems/string-rotation-lcci/) |        [字符串轮转](#字符串轮转)         |  :star:  |      | :heavy_check_mark: |
+| 2/[面试题 02.01. 移除重复节点](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |      [移除重复节点](#移除重复节点)       |  :star:  |      |                    |
+| 3/[面试题 02.02. 返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/) | [返回倒数第20个节点](#返回倒数第k个节点) |  :star:  |      |                    |
+|                                                              |                                          |          |      |                    |
 
 ## 题目
 
@@ -47,7 +47,36 @@
 
 #### 题解
 
+##### 将某一字符串本身相连接
 
+```python
+class Solution:
+    def isFlipedString(self, s1: str, s2: str) -> bool:
+        S=s1+s1
+        if (s2 in S) and len(s1)==len(s2):
+            return True
+        else:
+            return False
+```
+
+##### 找到字符串的分割方式
+
+```python
+class Solution:
+    def isFlipedString(self, s1: str, s2: str) -> bool:
+        if len(s1)!=len(s2):
+            return False
+        if s1 == s2:
+            return True
+        for i in range(len(s1)):
+            if s1[0:i]==s2[-i:len(s2)]:
+                S=s1[i:len(s1)]+s1[0:i]
+                if S==s2:
+                    return True
+                else:
+                    return False
+        return False
+```
 
 
 
