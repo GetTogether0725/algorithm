@@ -5,7 +5,7 @@
 |                          序号/题号                           |                   题目                   | 难度系数 |        阿宫        |        阿唐        |
 | :----------------------------------------------------------: | :--------------------------------------: | :------: | :----------------: | :----------------: |
 | 1/[面试题 01.09. 字符串轮转](https://leetcode.cn/problems/string-rotation-lcci/) |        [字符串轮转](#字符串轮转)         |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
-| 2/[面试题 02.01. 移除重复节点](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |      [移除重复节点](#移除重复节点)       |  :star:  |                    |                    |
+| 2/[面试题 02.01. 移除重复节点](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |      [移除重复节点](#移除重复节点)       |  :star:  | :heavy_check_mark: |                    |
 | 3/[面试题 02.02. 返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/) | [返回倒数第20个节点](#返回倒数第k个节点) |  :star:  |                    |                    |
 |                                                              |                                          |          |                    |                    |
 
@@ -145,6 +145,40 @@ public:
 
 
 #### 题解
+
+##### 使用`set`缓冲区
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeDuplicateNodes(ListNode* head) {
+        if(!head) return head;  // 先判空
+        unordered_set<int> set; // 缓冲区存val值
+        ListNode* newList;      // 返回值指针
+        newList = head;         // 将返回值指针指向head
+        set.insert(head->val);  // 将head值添加到缓冲区
+        while(head->next) {     // 当前head中的next是否为空，不为空，则判断下一个节点值是否在缓冲区中
+            int &val = head->next->val;
+            if(set.count(val)) {// 如果在，则将当前head中的next指针指向下一个节点的next值
+                // 移除当前节点
+                head->next = head->next->next;
+            } else {            // 否则将当前head的val保存到缓冲区，链表后移
+                set.insert(val);
+                head = head->next;
+            }
+        } 
+        return newList;        
+    }
+};
+```
 
 
 
