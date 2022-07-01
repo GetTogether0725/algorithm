@@ -5,8 +5,8 @@
 |                          序号/题号                           |                   题目                   | 难度系数 |        阿宫        |        阿唐        |
 | :----------------------------------------------------------: | :--------------------------------------: | :------: | :----------------: | :----------------: |
 | 1/[面试题 01.09. 字符串轮转](https://leetcode.cn/problems/string-rotation-lcci/) |        [字符串轮转](#字符串轮转)         |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
-| 2/[面试题 02.01. 移除重复节点](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |      [移除重复节点](#移除重复节点)       |  :star:  | :heavy_check_mark: |                    |
-| 3/[面试题 02.02. 返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/) | [返回倒数第20个节点](#返回倒数第k个节点) |  :star:  |                    |                    |
+| 2/[面试题 02.01. 移除重复节点](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |      [移除重复节点](#移除重复节点)       |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
+| 3/[面试题 02.02. 返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/) | [返回倒数第20个节点](#返回倒数第k个节点) |  :star:  |                    | :heavy_check_mark: |
 |                                                              |                                          |          |                    |                    |
 
 ## 题目
@@ -180,9 +180,36 @@ public:
 };
 ```
 
+使用缓冲区，枚举前驱节点
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def removeDuplicateNodes(self, head: ListNode) -> ListNode:
+        if not head:
+            return head
+        ret = head   #ret和head指向同一个链表的第一个节点
+        vals = {head.val}
+        while ret.next:
+            if ret.next.val not in vals:
+                vals.add(ret.next.val)
+                ret = ret.next   #移动ret的指针不会改变head
+            else:
+                ret.next = ret.next.next    #改变ret.next会改变head
+        return  head
+```
+
 
 
 ### [返回倒数第k个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/)
+
+
+#### 题目
 
 实现一种算法，找出单向链表中倒数第 k 个节点。返回该节点的值。
 
@@ -199,18 +226,50 @@ public:
 
 - 给定的 k 保证是有效的。
 
-
-
-
-#### 题目
-
-
-
 #### 题解
 
+求解链表长度，并将元素按顺序保存为list
 
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
+class Solution:
+    def kthToLast(self, head: ListNode, k: int) -> int:
+        vals=[]
+        lens=0
+        while head:
+            lens += 1
+            vals.append(head.val)
+            head = head.next
+        return vals[lens-k]
+```
 
+求解长度，遍历两次链表
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def kthToLast(self, head: ListNode, k: int) -> int:
+        length = 0
+        hea = head
+        while hea:
+            length+=1
+            hea = hea.next
+        i = length - k
+        for li in range(0,i,1):
+            head = head.next
+        return head.val
+
+```
 
 
 
