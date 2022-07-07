@@ -2,12 +2,12 @@
 
 ## 看板
 
-|                          序号/题号                           |   题目   |   难度系数   | 阿宫 | 阿唐 |
-| :----------------------------------------------------------: | :------: | :----------: | :--: | :--: |
-| 1/[面试题 02.06. 回文链表](https://leetcode.cn/problems/palindrome-linked-list-lcci/) | 回文链表 |    :star:    |      |      |
-| 2/[面试题 02.07. 链表相交](https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/) | 链表相交 | :star::star: |      |      |
-| 3/[面试题 02.08. 环路检测](https://leetcode.cn/problems/linked-list-cycle-lcci/) | 环路检测 | :star::star: |      |      |
-|                                                              |          |              |      |      |
+|                          序号/题号                           |   题目   |   难度系数   | 阿宫 |        阿唐        |
+| :----------------------------------------------------------: | :------: | :----------: | :--: | :----------------: |
+| 1/[面试题 02.06. 回文链表](https://leetcode.cn/problems/palindrome-linked-list-lcci/) | 回文链表 |    :star:    |      | :heavy_check_mark: |
+| 2/[面试题 02.07. 链表相交](https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/) | 链表相交 | :star::star: |      |                    |
+| 3/[面试题 02.08. 环路检测](https://leetcode.cn/problems/linked-list-cycle-lcci/) | 环路检测 | :star::star: |      |                    |
+|                                                              |          |              |      |                    |
 
 ## 题目
 
@@ -37,6 +37,27 @@
 
 
 #### 题解
+
+转换为列表
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        L = []
+        while head:
+            L.append(head.val)
+            head = head.next
+        lenth = len(L)
+        for i in range (0, lenth // 2, 1):
+            if L[i] != L[-(i+1)]:
+                return False
+        return True
+```
 
 
 
