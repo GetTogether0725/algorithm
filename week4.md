@@ -271,6 +271,63 @@ class Solution:
 
 ```
 
+辅助数组法
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int kthToLast(ListNode* head, int k) {
+        unordered_map<int, int> map;
+        int i=0;
+        for (; head ; ++i) {
+            map[i] = head->val;
+            head = head -> next;
+        }
+        return map[i - k];
+    }
+};
+```
+
+快慢指针，确实舒服，不需要另外的空间。
+
+```cpp
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+
+class Solution {
+public:
+    int kthToLast(ListNode* head, int k) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+
+        for(int i=0; i < k; ++i) {
+            fast = fast->next;
+        }
+        
+        for (; fast ; ) {
+            fast = fast -> next;
+            slow = slow -> next;
+        }
+        return slow->val;
+    }
+};
+```
+
 
 
 # 内卷小天地
