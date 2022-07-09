@@ -6,7 +6,7 @@
 | :----------------------------------------------------------: | :--------------------------------------: | :------: | :----------------: | :----------------: |
 | 1/[面试题 01.09. 字符串轮转](https://leetcode.cn/problems/string-rotation-lcci/) |        [字符串轮转](#字符串轮转)         |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
 | 2/[面试题 02.01. 移除重复节点](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |      [移除重复节点](#移除重复节点)       |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
-| 3/[面试题 02.02. 返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/) | [返回倒数第20个节点](#返回倒数第k个节点) |  :star:  |                    | :heavy_check_mark: |
+| 3/[面试题 02.02. 返回倒数第 k 个节点](https://leetcode.cn/problems/kth-node-from-end-of-list-lcci/) | [返回倒数第20个节点](#返回倒数第k个节点) |  :star:  | :heavy_check_mark: | :heavy_check_mark: |
 |                                                              |                                          |          |                    |                    |
 
 ## 题目

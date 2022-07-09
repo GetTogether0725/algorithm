@@ -2,12 +2,12 @@
 
 ## 看板
 
-|                          序号/题号                           |             题目              |   难度系数   | 阿宫 |        阿唐        |
-| :----------------------------------------------------------: | :---------------------------: | :----------: | :--: | :----------------: |
-| 1/[面试题 02.03. 删除中间节点](https://leetcode.cn/problems/delete-middle-node-lcci/) | [删除中间节点](#删除中间节点) |    :star:    |      | :heavy_check_mark: |
-| 2/[面试题 02.04. 分割链表](https://leetcode.cn/problems/partition-list-lcci/) |     [分割链表](#分割链表)     | :star::star: |      | :heavy_check_mark: |
-| 3/[面试题 02.05. 链表求和](https://leetcode.cn/problems/sum-lists-lcci/) |     [链表求和](#链表求和)     | :star::star: |      | :heavy_check_mark: |
-|                                                              |                               |              |      |                    |
+|                          序号/题号                           |             题目              |   难度系数   |        阿宫        |        阿唐        |
+| :----------------------------------------------------------: | :---------------------------: | :----------: | :----------------: | :----------------: |
+| 1/[面试题 02.03. 删除中间节点](https://leetcode.cn/problems/delete-middle-node-lcci/) | [删除中间节点](#删除中间节点) |    :star:    | :heavy_check_mark: | :heavy_check_mark: |
+| 2/[面试题 02.04. 分割链表](https://leetcode.cn/problems/partition-list-lcci/) |     [分割链表](#分割链表)     | :star::star: | :heavy_check_mark: | :heavy_check_mark: |
+| 3/[面试题 02.05. 链表求和](https://leetcode.cn/problems/sum-lists-lcci/) |     [链表求和](#链表求和)     | :star::star: | :heavy_check_mark: | :heavy_check_mark: |
+|                                                              |                               |              |                    |                    |
 
 ## 题目
 
@@ -47,6 +47,19 @@ class Solution:
         """
         node.val = node.next.val
         node.next = node.next.next
+```
+
+确实写的迷迷糊糊
+
+```cpp
+class Solution {
+public:
+    // node 为要删除的节点。。
+    void deleteNode(ListNode* node) {
+        node->val = node->next->val;
+        node->next = node->next->next;
+    }
+};
 ```
 
 
@@ -105,6 +118,37 @@ class Solution:
             max = max.next
         return head
 ```
+
+还是快慢指针，快指针先走，慢指针只想小于x的区域，如果满足条件，则交换快慢指针域的值。
+
+```cpp
+class Solution {
+public:
+    void swap(int &a, int &b) {
+        int c = a;
+        a = b;
+        b = c;
+    }
+
+    ListNode* partition(ListNode* head, int x) {
+        // 快慢指针，快指针先走，慢指针指向小于x的区域
+        ListNode* fast = head;
+        ListNode* slow = head;
+
+        while (fast) {
+            if(fast->val < x) { /* 如果小于x,交换快慢指针域的值 */
+                swap(fast->val,slow->val);
+                slow = slow->next;
+            } 
+            fast = fast->next;
+        }
+
+        return head;
+    }
+};
+```
+
+
 
 ### [链表求和](https://leetcode.cn/problems/sum-lists-lcci/)
 
@@ -206,6 +250,43 @@ class Solution:
         if up != 0:
             l3.next = ListNode(up)
         return sum
+```
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* dummy = new ListNode(0); // 创建dummy节点
+        ListNode* head = dummy;            // 创建指向dummy节点的指针，返回dummy节点的下一个
+        int tmp=0;                         // 临时存储的结果
+
+        while(l1 != nullptr || l2 != nullptr || tmp != 0) {
+            if(l1 != nullptr) { // 如果l1不为空，则相加并下移 
+                tmp += l1->val;
+                l1 = l1->next;
+            }
+            if(l2 != nullptr) {// 如果l2不为空，则相加并下移 
+                tmp += l2->val;
+                l2 = l2->next;
+            }
+            // 创建新节点并加到head的下一个节点
+            head->next = new ListNode(tmp%10);
+            // 往后移
+            head = head->next;
+            // 取出高位
+            tmp /= 10;
+        }
+        return dummy->next;
+    }
+};
 ```
 
 
